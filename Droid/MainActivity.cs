@@ -58,9 +58,14 @@ namespace XNMapboxDemo.Droid
                     txtLoc.Text = $"Latitude={currentLocation.Latitude} , Longitude={currentLocation.Longitude} ";
                     Console.WriteLine($"Latitude: {currentLocation.Latitude}, Longitude: {currentLocation.Longitude}, Altitude: {currentLocation.Altitude}");
 
-                    var point = Com.Mapbox.Geojson.Point.FromLngLat(currentLocation.Latitude, currentLocation.Longitude);
+                    //mapView.GetMapAsync(this);
+
+
+                    Com.Mapbox.Geojson.Point point = Com.Mapbox.Geojson.Point.FromLngLat(currentLocation.Longitude, currentLocation.Latitude);
+                    mapbox.MoveCamera(CameraUpdateFactory.NewLatLngZoom(new LatLng(point.Latitude(), point.Longitude()), 15));
+
                     var options = new SymbolOptions();
-                    options.WithIconImage("fire-station-11");
+                    options.WithIconImage("airport-15");
                     options.WithGeometry(point);
                     options.WithIconSize(new Float(2f))
                         .WithDraggable(true);
@@ -134,7 +139,7 @@ namespace XNMapboxDemo.Droid
 
 
 
-            mapbox.SetStyle(new Style.Builder().FromUri("mapbox://styles/abhishekswaraj23/ckca5b9ol1xyl1inypmizjc8g"),this);//"mapbox://styles/abhishekswaraj23/ckca5b9ol1xyl1inypmizjc8g"));
+            mapbox.SetStyle(new Style.Builder().FromUri("mapbox://styles/abhishekswaraj23/ckcahuo1c44tz1ipjl72myvgz"),this);// mapbox://styles/abhishekswaraj23/ckca5b9ol1xyl1inypmizjc8g"),this);//"mapbox://styles/abhishekswaraj23/ckca5b9ol1xyl1inypmizjc8g"));
 
             //MarkerOptions marker = new MarkerOptions();
             //marker.SetPosition(new LatLng(21.0276, 105.8355));
@@ -172,7 +177,7 @@ namespace XNMapboxDemo.Droid
         {
             symbolManager = new SymbolManager(mapView, mapbox, p0);
             Com.Mapbox.Geojson.Point point = Com.Mapbox.Geojson.Point.FromLngLat(105.505, 21.033);
-            mapbox.MoveCamera(CameraUpdateFactory.NewLatLngZoom(new LatLng(point.Latitude(), point.Longitude()), 15));
+            mapbox.MoveCamera(CameraUpdateFactory.NewLatLngZoom(new LatLng(point.Latitude(), point.Longitude()), 8));
 
             var options = new SymbolOptions();
             options.WithIconImage("fire-station-11");
@@ -182,11 +187,12 @@ namespace XNMapboxDemo.Droid
 
             var symbol = symbolManager.Create(options);
 
-            Com.Mapbox.Geojson.Point point2 = Com.Mapbox.Geojson.Point.FromLngLat(25.867, 85.172);
+            Com.Mapbox.Geojson.Point point2 = Com.Mapbox.Geojson.Point.FromLngLat(25.8672299, 85.1720807);
             var options2 = new SymbolOptions()
                 .WithIconImage("fire-station-11")
                 .WithGeometry(point2)
-                .WithIconSize(new Float(2f));
+                .WithIconSize(new Float(2f))
+                .WithDraggable(true);
 
             var symbol2 = symbolManager.Create(options2);
 
