@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+    <Button
+        android:id="@+id/btngetLoc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GET CURRENT LOCATION"/>
+    <TextView
+        android:id="@+id/txtLatLong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+	<com.mapbox.mapboxsdk.maps.MapView
+		android:id="@+id/mapView"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+        mapbox:mapbox_cameraZoom="4"/>
+</LinearLayout>
